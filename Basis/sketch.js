@@ -20,16 +20,14 @@ function setup() {
 
 function draw() {
   background(220, 0, 0);
-
   for (var y = 0; y < numCols; y++) {
     for (var x = 0; x < numRows; x++) {
+      console.log("y", y, "x", x);
       push();
       translate(x * tileSize, y * tileSize);
-
       //   noStroke();
       //  fill(random(255), random(255), random(255));
       //  rect(0, 0, tileSize, tileSize);
-
       image(random(patternarray), 0, 0, tileSize, tileSize);
       pop();
     }
