@@ -19,7 +19,7 @@ function setup() {
 }
 
 function draw() {
-  background(220, 0, 0);
+  background(255);
   for (var y = 0; y < numCols; y++) {
     for (var x = 0; x < numRows; x++) {
       console.log("y", y, "x", x);
