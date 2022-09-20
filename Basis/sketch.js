@@ -1,6 +1,6 @@
 let numRows = 3;
 let numCols = 3;
-let tileSize = 400;
+let tileSize = 200;
 let patternarray = [];
 let subdivide = 4;
 
@@ -24,6 +24,7 @@ function setup() {
 }
 
 function draw() {
+  9;
   background(255);
   for (var y = 0; y < numCols; y++) {
     for (var x = 0; x < numRows; x++) {
