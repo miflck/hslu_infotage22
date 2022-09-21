@@ -3,6 +3,7 @@ let numRows = 3; // Anzahl Kacheln in X-Richtung
 let numCols = 3; // Anzahl Kacheln in Y Richtung
 let tileSize = 400; // Grösse der Kacheln
 let patternarray = []; // Liste aller verfügbaren Muster/Kacheln
+let canvas;
 
 // Vor dem Setup ausführen
 function preload() {
@@ -24,7 +25,7 @@ function setup() {
   // Auf Hue, Saturation, Brightness umstellen. Macht es einfacher, shades von Farben zu generieren
   colorMode(HSB, 360, 100, 100);
   // Die Canvas aufssetzen
-  createCanvas(numRows * tileSize, numCols * tileSize);
+  canvas = createCanvas(numRows * tileSize, numCols * tileSize);
   // Gewünschte Framerate
   frameRate(60);
   // Für den Moment brauchen wir keinen Loop über die draw funktion. Sie wird nur einmal ausgeführt.
@@ -91,6 +92,46 @@ function keyPressed() {
     redraw();
   }
   if (key == "s") {
-    saveCanvas("myPattern", ".png");
+    // saveCanvas("myPattern", ".png");
+    // var dataURL = canvas.toDataURL();
+    //const file = dataURLtoBlob(canvas.toDataURL());
+    // console.log(canvas);
+    var photo = canvas.canvas.toDataURL("image/jpeg");
+
+    //let url = "https://hslu2022.michaelflueckiger.ch/upload/upload.php";
+    let url = "./upload/upload.php";
+
+    let postData = {
+      userId: 1,
+      title: "p5 Clicked!",
+      body: "p5.js is very cool.",
+    };
+
+    httpPost(url, "image/jpeg", photo);
+
+    //    httpPost("./upload/upload.php", "hello");
+    /*
+    $.ajax({
+      method: "POST",
+      url: "https://hslu2022.michaelflueckiger.ch/upload/upload.php",
+      data: {
+        photo: photo,
+      },
+    });*/
   }
+}
+
+function dataURLtoBlob(dataURL) {
+  let array, binary, i, len;
+  binary = atob(dataURL.split(",")[1]);
+  array = [];
+  i = 0;
+  len = binary.length;
+  while (i < len) {
+    array.push(binary.charCodeAt(i));
+    i++;
+  }
+  return new Blob([new Uint8Array(array)], {
+    type: "image/png",
+  });
 }
