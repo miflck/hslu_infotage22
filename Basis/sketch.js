@@ -1,7 +1,7 @@
 // Grid Variabeln
 let numRows = 3; // Anzahl Kacheln in X-Richtung
 let numCols = 3; // Anzahl Kacheln in Y Richtung
-let tileSize = 200; // Grösse der Kacheln
+let tileSize = 400; // Grösse der Kacheln
 let patternarray = []; // Liste aller verfügbaren Muster/Kacheln
 
 // Vor dem Setup ausführen
@@ -9,7 +9,6 @@ function preload() {
   // hier werden die Muster aus dem Assets Ordner geladen
   patternarray.push(loadImage("assets/0.png"));
   patternarray.push(loadImage("assets/1.png"));
-
   patternarray.push(loadImage("assets/kreis 1.png"));
   patternarray.push(loadImage("assets/kreis 2.png"));
   patternarray.push(loadImage("assets/kreis 3.png"));
@@ -77,6 +76,7 @@ function draw() {
       } else {
         // wähle eine zufällige Sättigung
         let saturation = random(100);
+
         tint(hue, saturation, brightness);
         // wenn die Kachel nicht unterteilt werden soll, geht es hier weiter mit dem Zeichnen der Kachel
         image(random(patternarray), 0, 0, tileSize, tileSize);
