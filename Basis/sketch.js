@@ -102,7 +102,10 @@ function keyPressed() {
     //let url = "https://hslu2022.michaelflueckiger.ch/upload/upload.php";
     let url = "./upload/upload.php";
 
-    httpPost(url, "image/jpeg", dataURL);
+    let data = { photo: dataURL };
+    console.log("data", data);
+
+    httpPost(url, "image/jpeg", data);
 
     //    httpPost("./upload/upload.php", "hello");
     /*
