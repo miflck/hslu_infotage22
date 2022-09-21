@@ -1,7 +1,7 @@
 // Grid Variabeln
 let numRows = 3; // Anzahl Kacheln in X-Richtung
 let numCols = 3; // Anzahl Kacheln in Y Richtung
-let tileSize = 400; // Grösse der Kacheln
+let tileSize = 200; // Grösse der Kacheln
 let patternarray = []; // Liste aller verfügbaren Muster/Kacheln
 let canvas;
 
@@ -96,18 +96,13 @@ function keyPressed() {
     // var dataURL = canvas.toDataURL();
     //const file = dataURLtoBlob(canvas.toDataURL());
     // console.log(canvas);
-    var photo = canvas.canvas.toDataURL("image/jpeg");
+    var dataURL = canvas.canvas.toDataURL("image/jpeg");
+    console.log(dataURL);
 
     //let url = "https://hslu2022.michaelflueckiger.ch/upload/upload.php";
     let url = "./upload/upload.php";
 
-    let postData = {
-      userId: 1,
-      title: "p5 Clicked!",
-      body: "p5.js is very cool.",
-    };
-
-    httpPost(url, "image/jpeg", photo);
+    httpPost(url, "image/jpeg", dataURL);
 
     //    httpPost("./upload/upload.php", "hello");
     /*
