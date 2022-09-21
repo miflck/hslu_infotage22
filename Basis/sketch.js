@@ -96,16 +96,29 @@ function keyPressed() {
     // var dataURL = canvas.toDataURL();
     //const file = dataURLtoBlob(canvas.toDataURL());
     // console.log(canvas);
-    var dataURL = canvas.canvas.toDataURL("image/jpeg");
-    console.log(dataURL);
+    //var dataURL = canvas.canvas.toDataURL("image/jpeg");
+    //console.log(dataURL);
 
     //let url = "https://hslu2022.michaelflueckiger.ch/upload/upload.php";
-    let url = "./upload/upload.php";
+    //let url = "./upload/upload.php";
 
-    let data = { photo: dataURL };
-    console.log("data", data);
+    //let data = { photo: dataURL };
+    //console.log("data", data);
 
-    httpPost(url, "image/jpeg", data);
+    // PNG file
+    let file = null;
+    let blob = canvas.canvas.toBlob(function (blob) {
+      file = new File([blob], "test.png", { type: "image/png" });
+    }, "image/png");
+
+    //httpPost(url, "image/jpeg", data);
+
+    let request = new XMLHttpRequest();
+    request.open("POST", "./upload/upload.php");
+    request.addEventListener("load", function (e) {
+      console.log(request.response);
+    });
+    request.send(blob);
 
     //    httpPost("./upload/upload.php", "hello");
     /*
