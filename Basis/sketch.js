@@ -111,6 +111,10 @@ function keyPressed() {
       file = new File([blob], "test.png", { type: "image/png" });
     }, "image/png");
 
+    let image_base64 = canvas.canvas
+      .toDataURL()
+      .replace(/^data:image\/png;base64,/, "");
+
     //httpPost(url, "image/jpeg", data);
 
     let request = new XMLHttpRequest();
@@ -118,7 +122,11 @@ function keyPressed() {
     request.addEventListener("load", function (e) {
       console.log(request.response);
     });
-    request.send(blob);
+    request.send({
+      data: {
+        photo: photo,
+      },
+    });
 
     //    httpPost("./upload/upload.php", "hello");
     /*
