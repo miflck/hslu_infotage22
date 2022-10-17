@@ -3,6 +3,9 @@ let numCols = 3;
 let tileSize = 200;
 let patternarray = [];
 
+let visWidth = 600;
+let visHeight = 600;
+
 let imageArray = [];
 let paramArray = [];
 
@@ -47,10 +50,12 @@ function draw() {
   paramArray.forEach((element, index) => {
     console.log(element);
     push();
-    translate((index % numRows) * tileSize, floor(index / numCols) * tileSize);
-    fill(255, 0, 0);
+    // translate((index % numRows) * tileSize, floor(index / numCols) * tileSize);
+    translate(0, 0);
+
+    //fill(255, 0, 0);
     // rect(0, 0, tileSize, tileSize);
-    image(patternarray[element], 0, 0, tileSize, tileSize);
+    image(patternarray[element], 0, 0, visWidth, visHeight);
 
     pop();
   });
