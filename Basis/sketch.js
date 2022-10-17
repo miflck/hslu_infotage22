@@ -1,16 +1,9 @@
-let numRows = 3;
-let numCols = 3;
-let tileSize = 200;
 let patternarray = [];
 
 let visWidth = 600;
 let visHeight = 600;
 
-let imageArray = [];
 let paramArray = [];
-
-let sel;
-let sel2;
 
 function preload() {
   patternarray.push(loadImage("assets/0.png"));
@@ -19,15 +12,15 @@ function preload() {
   patternarray.push(loadImage("assets/3.png"));
   patternarray.push(loadImage("assets/4.png"));
   patternarray.push(loadImage("assets/5.png"));
-  patternarray.push(loadImage("assets/dreieck 1.png"));
-  patternarray.push(loadImage("assets/dreieck 2.png"));
-  patternarray.push(loadImage("assets/dreieck 3.png"));
-  patternarray.push(loadImage("assets/dreieck 4.png"));
+  patternarray.push(loadImage("assets/6.png"));
+  patternarray.push(loadImage("assets/7.png"));
+  patternarray.push(loadImage("assets/8.png"));
+  patternarray.push(loadImage("assets/9.png"));
 }
 
 function setup() {
-  createCanvas(numRows * tileSize, numCols * tileSize);
-  colorMode(HSB, 360, 100, 100);
+  createCanvas(visWidth, visHeight);
+  colorMode(HSB, 360, 100, 100, 100);
   frameRate(60);
   noLoop();
 }
@@ -35,36 +28,20 @@ function setup() {
 function draw() {
   background(255);
 
-  /*for (var y = 0; y < numCols; y++) {
-    for (var x = 0; x < numRows; x++) {
-      //console.log("y", y, "x", x);
-      push();
-      translate(x * tileSize, y * tileSize);
-      //   noStroke();
-      //  fill(random(255), random(255), random(255));
-      //  rect(0, 0, tileSize, tileSize);
-      image(random(patternarray), 0, 0, tileSize, tileSize);
-      pop();
-    }
-  }*/
-
   paramArray.forEach((element, index) => {
-    console.log(element);
     push();
-    // translate((index % numRows) * tileSize, floor(index / numCols) * tileSize);
     translate(0, 0);
+
+    // farben festlegen. das kann natürlich z.b auch an ein dropdown geknüpft werden
     let hue = map(index, 0, paramArray.length, 0, 360);
     let saturation = 80;
     let brightness = 80;
 
-    console.log("hue", hue);
-
+    //blendMode(DIFFERENCE);
+    // das png wird eingefärbt: achtung, es muss weiss auf transparent sein
     tint(hue, saturation, brightness);
-
-    //fill(255, 0, 0);
-    rect(0, 0, tileSize, tileSize);
+    // rect(0, 0, tileSize, tileSize);
     image(patternarray[element], 0, 0, visWidth, visHeight);
-
     pop();
   });
 }
@@ -78,21 +55,12 @@ function keyPressed() {
   }
 }
 
+// immer wenn ein dropdown bedient wird, wird diese funktion ausgelöst:
+// der value des dropdowns wird ausgelesen und das entsprechende bild in den paramArray geladen
 function getValue(selectObject) {
   var value = parseInt(selectObject.value);
   var id = parseInt(selectObject.id);
   paramArray[id] = value;
   console.log(id, value, paramArray);
-
   redraw();
-}
-
-function changeBg() {
-  console.log(this.value(), this.attribute("thing"), this.id());
-  let val = sel.value();
-  /*if (val == "Red") {
-    redraw();
-  } else if (val == "Blue") {
-  } else if (val == "Green") {
-  }*/
 }
