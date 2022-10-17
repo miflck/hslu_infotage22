@@ -27,6 +27,7 @@ function preload() {
 
 function setup() {
   createCanvas(numRows * tileSize, numCols * tileSize);
+  colorMode(HSB, 360, 100, 100);
   frameRate(60);
   noLoop();
 }
@@ -52,9 +53,16 @@ function draw() {
     push();
     // translate((index % numRows) * tileSize, floor(index / numCols) * tileSize);
     translate(0, 0);
+    let hue = map(index, 0, paramArray.length, 0, 360);
+    let saturation = 80;
+    let brightness = 80;
+
+    console.log("hue", hue);
+
+    tint(hue, saturation, brightness);
 
     //fill(255, 0, 0);
-    // rect(0, 0, tileSize, tileSize);
+    rect(0, 0, tileSize, tileSize);
     image(patternarray[element], 0, 0, visWidth, visHeight);
 
     pop();
