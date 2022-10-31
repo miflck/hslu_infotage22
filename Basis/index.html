@@ -8,6 +8,13 @@
 
     <link rel="stylesheet" type="text/css" href="style.css" />
 
+    <script
+      src="https://cdn.socket.io/3.1.3/socket.io.min.js"
+      integrity="sha384-cPwlPLvBTa3sKAgddT6krw0cJat7egBga3DJepJyrLl4Q9/5WLra3rrnMcyTyOnh"
+      crossorigin="anonymous"
+    ></script>
+    <script src="socketHandler.js"></script>
+
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
   </head>
@@ -20,8 +27,8 @@
         <label for="0">0</label>
         <select id="0" onchange="getValue(this)">
           <option value="">Select combo</option>
-          <option value="0">nix</option>
-          <option value="1">farbe</option>
+          <option value="0">A</option>
+          <option value="1">B</option>
         </select>
       </div>
 
@@ -29,8 +36,8 @@
         <label for="1">1</label>
         <select id="1" onchange="getValue(this)">
           <option value="">Select combo</option>
-          <option value="2">Dreieck rT</option>
-          <option value="3">Dreieck rB</option>
+          <option value="2">A</option>
+          <option value="3">B</option>
         </select>
       </div>
 
@@ -38,17 +45,17 @@
         <label for="2">2</label>
         <select id="2" onchange="getValue(this)">
           <option value="">Select combo</option>
-          <option value="4">Dreieck lB</option>
-          <option value="5">Dreieck lT</option>
+          <option value="4">A</option>
+          <option value="5">B</option>
         </select>
       </div>
-      <br />
+
       <div class="inputwrapper">
         <label for="3">3</label>
         <select id="3" onchange="getValue(this)">
           <option value="">Select combo</option>
-          <option value="6">Reis rT</option>
-          <option value="7">Kreis rB</option>
+          <option value="6">A</option>
+          <option value="7">B</option>
         </select>
       </div>
 
@@ -56,8 +63,107 @@
         <label for="4">4</label>
         <select id="4" onchange="getValue(this)">
           <option value="">Select combo</option>
-          <option value="8">Reis lB</option>
-          <option value="9">Kreis lT</option>
+          <option value="8">A</option>
+          <option value="9">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="5">5</label>
+        <select id="5" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="10">A</option>
+          <option value="11">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="6">6</label>
+        <select id="6" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="12">A</option>
+          <option value="13">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="7">7</label>
+        <select id="7" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="14">A</option>
+          <option value="15">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="8">8</label>
+        <select id="8" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="16">A</option>
+          <option value="17">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="9">9</label>
+        <select id="9" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="18">A</option>
+          <option value="19">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="10">10</label>
+        <select id="10" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="20">A</option>
+          <option value="21">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="11">11</label>
+        <select id="11" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="22">A</option>
+          <option value="23">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="12">12</label>
+        <select id="12" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="24">A</option>
+          <option value="25">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="13">13</label>
+        <select id="13" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="26">A</option>
+          <option value="27">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="14">14</label>
+        <select id="14" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="28">A</option>
+          <option value="29">B</option>
+        </select>
+      </div>
+
+      <div class="inputwrapper">
+        <label for="15">15</label>
+        <select id="15" onchange="getValue(this)">
+          <option value="">Select combo</option>
+          <option value="30">A</option>
+          <option value="31">B</option>
         </select>
       </div>
     </div>
