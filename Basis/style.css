@@ -7,10 +7,25 @@ canvas {
   display: block;
 }
 
-#prompt{
+#sidebar{
   border:solid thin red;
   display:block;
   position: fixed;
 width:400px;
 right:0px;
+}
+
+
+#fragenWrapper{
+  display: block;
+  border:solid thin red;
+  position: relative;
+  width:100vw;
+}
+
+#fragen{
+  position: relative;
+  border: solid thin blue;
+  font-size: 5rem;
+  display: block;
 }

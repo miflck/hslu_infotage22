@@ -17,12 +17,22 @@
 
     <script src="libraries/p5.min.js"></script>
     <script src="libraries/p5.sound.min.js"></script>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.1.min.js"
+      integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ="
+      crossorigin="anonymous"
+    ></script>
   </head>
 
   <body>
-    <script src="sketch.js"></script>
+    <!-- Hier das Domelement für die Fragen. Das sollte noch gestaltet werden-->
+    <div id="fragenWrapper">
+      <div id="fragen">hier sind die Frage</div>
+    </div>
 
-    <div id="prompt">
+    <!-- Das folgende ist nur fürs ausprobieren. die Dropdowns sollten in der Produktion dann wieder weg-->
+    <div id="sidebar">
       <div class="inputwrapper">
         <label for="0">0</label>
         <select id="0" onchange="getValue(this)">
@@ -167,5 +177,7 @@
         </select>
       </div>
     </div>
+
+    <script src="sketch.js"></script>
   </body>
 </html>

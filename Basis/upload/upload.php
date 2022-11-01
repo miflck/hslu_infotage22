@@ -1,5 +1,6 @@
 <?php
-
+echo "hello";
+echo "<h2>hello</h2>";
 $img = file_get_contents("php://input"); // $_POST didn't work
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
