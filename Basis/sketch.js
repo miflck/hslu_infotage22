@@ -13,7 +13,7 @@ let fragenindex = 0;
 
 // die Fragen
 let fragenarray = [
-  "meine erste Frage",
+  "meine erste Frage <span class='red'>hallo</span>",
   "meine zweite Frage",
   "meine dritte Frage",
   "meine 4 Frage",
@@ -90,12 +90,13 @@ function draw() {
     let saturation = 80;
     let brightness = 80;
     // blendmodes, wie bei Photoshop. Also wird das bild normal dargestellt oder z.B multipliziert etc
-    //blendMode(DIFFERENCE);
+    //if(index==2)blendMode(DIFFERENCE);
     // das png wird eingefärbt: achtung, es muss weiss auf transparent sein
     tint(hue, saturation, brightness);
     // rect(0, 0, tileSize, tileSize);
     // deas bild wird getzeichnet
     image(patternarray[element], 0, 0, visWidth, visHeight);
+    //blendMode(SCREEN)
     pop();
   });
 }

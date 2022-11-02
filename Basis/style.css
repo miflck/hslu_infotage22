@@ -7,9 +7,14 @@ canvas {
   display: block;
 }
 
+.red{
+  color:red;
+}
+
 #sidebar{
+  
   border:solid thin red;
-  display:block;
+  display:none;
   position: fixed;
 width:400px;
 right:0px;
@@ -23,9 +28,19 @@ right:0px;
   width:100vw;
 }
 
+#buttons{
+  display: block;
+}
+
 #fragen{
   position: relative;
   border: solid thin blue;
   font-size: 5rem;
   display: block;
+}
+
+#defaultCanvas0{
+display: block;
+position: absolute;
+border: solid thin black;
 }
