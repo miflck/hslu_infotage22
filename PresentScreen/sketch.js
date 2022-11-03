@@ -10,9 +10,33 @@ var possible_images;
 
 var imageurls = [];
 
+function fentchFiles() {
+  fetch("  http://localhost:8000/upload/getFiles.php", {
+    method: "GET",
+    mode: "cors", // no-cors, *cors, same-origin
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+  })
+    .then((response) => response.text())
+    .then((success) => {
+      // all files
+      let incoming = JSON.parse(success);
+      // only keep new files in result
+      let result = incoming.filter((n) => !imageurls.includes(n));
+      //combine arrays
+      imageurls = [...new Set([...imageurls, ...incoming])];
+      console.log(incoming, result, imageurls);
+      // push in new tile
+      result.forEach((item) => {
+        createNewTile(0, item);
+        console.log(item);
+      });
+    })
+    .catch((error) => console.log("error", error));
+}
+
 function setup() {
   createCanvas(numRows * visWidth, numCols * visHeight);
-
+  setInterval(fentchFiles, 3000);
   possible_images = [
     "assets/myPattern.-4.png",
     "assets/myPattern.-5.png",
