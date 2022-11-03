@@ -7,6 +7,7 @@ header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
  
+header("Access-Control-Allow-Origin: *");
 
 //echo "<h2>hello</h2>";
 
@@ -21,5 +22,7 @@ header("Content-Length: $size bytes");
 // output the file contents
 $data=readfile($filename);
 echo "<div style='width: 15%; height:10%; position:relative; top:22%; left:20%'/>".$data."</div>";
+
+//http://localhost:8000/upload/getImage.php?file=1667220558.png
 
 ?>

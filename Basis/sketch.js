@@ -122,6 +122,17 @@ function keyPressed() {
     setImage(fragenindex, 1);
     $("#fragen").html(fragenarray[fragenindex]);
   }
+
+  if (key == "l") {
+    fetch("./upload/getFiles.php", {
+      method: "GET",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    })
+      .then((response) => response.text())
+      .then((success) => console.log(success))
+      .catch((error) => console.log(error));
+  }
 }
 
 // immer wenn ein dropdown bedient wird, wird diese funktion ausgelöst:
