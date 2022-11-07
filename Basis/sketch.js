@@ -33,6 +33,27 @@ let fragenarray = [
 
 function preload() {
   // alle bilder müssen geladen werden
+  patternarray.push(loadImage("assets/01.1.png"));
+  patternarray.push(loadImage("assets/01.2.png"));
+  patternarray.push(loadImage("assets/02.1.png"));
+  patternarray.push(loadImage("assets/02.2.png"));
+  patternarray.push(loadImage("assets/03.1.png"));
+  patternarray.push(loadImage("assets/03.2.png"));
+  patternarray.push(loadImage("assets/04.1.png"));
+  patternarray.push(loadImage("assets/04.2.png"));
+  patternarray.push(loadImage("assets/05.1.png"));
+  patternarray.push(loadImage("assets/05.2.png"));
+  patternarray.push(loadImage("assets/06.1.png"));
+  patternarray.push(loadImage("assets/06.2.png"));
+  //Effekt
+  patternarray.push(loadImage("assets/07.1.png"));
+  patternarray.push(loadImage("assets/07.2.png"));
+
+  patternarray.push(loadImage("assets/08.1.png"));
+  patternarray.push(loadImage("assets/08.2.png"));
+  patternarray.push(loadImage("assets/09.1.png"));
+  patternarray.push(loadImage("assets/09.2.png"));
+  /*
   patternarray.push(loadImage("assets/0.png"));
   patternarray.push(loadImage("assets/1.png"));
   patternarray.push(loadImage("assets/2.png"));
@@ -65,6 +86,7 @@ function preload() {
   patternarray.push(loadImage("assets/29.png"));
   patternarray.push(loadImage("assets/30.png"));
   patternarray.push(loadImage("assets/31.png"));
+  */
 }
 
 function setup() {
@@ -92,7 +114,7 @@ function draw() {
     // blendmodes, wie bei Photoshop. Also wird das bild normal dargestellt oder z.B multipliziert etc
     //if(index==2)blendMode(DIFFERENCE);
     // das png wird eingefärbt: achtung, es muss weiss auf transparent sein
-    tint(hue, saturation, brightness);
+    // tint(hue, saturation, brightness);
     // rect(0, 0, tileSize, tileSize);
     // deas bild wird getzeichnet
     image(patternarray[element], 0, 0, visWidth, visHeight);
