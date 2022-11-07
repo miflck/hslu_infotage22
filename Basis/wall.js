@@ -11,7 +11,7 @@ var possible_images;
 var imageurls = [];
 
 function fentchFiles() {
-  fetch("  http://localhost:8000/upload/getFiles.php", {
+  fetch("  ./upload/getFiles.php", {
     method: "GET",
     mode: "cors", // no-cors, *cors, same-origin
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -116,7 +116,7 @@ function keyPressed() {
   }
 
   if (key == "l") {
-    fetch("  http://localhost:8000/upload/getFiles.php", {
+    fetch("  ./upload/getFiles.php", {
       method: "GET",
       mode: "cors", // no-cors, *cors, same-origin
 
@@ -136,7 +136,7 @@ function keyPressed() {
   }
 
   if (key == "m") {
-    fetch("  http://localhost:8000/upload/getFiles.php", {
+    fetch("  ./upload/getFiles.php", {
       method: "GET",
       mode: "cors", // no-cors, *cors, same-origin
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -281,7 +281,7 @@ function createNewTile(rowIndex, url) {
   let t = new Tile(visWidth, visHeight, -visWidth, 0);
 
   //1667220558.png
-  let img = loadImage("http://localhost:8000/upload/getImage.php?file=" + url);
+  let img = loadImage("./upload/getImage.php?file=" + url);
   t.setImage(img);
   t.setTargetX(0);
   cols[rowIndex].push(t);
