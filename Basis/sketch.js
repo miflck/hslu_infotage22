@@ -13,22 +13,18 @@ let fragenindex = 0;
 
 // die Fragen
 let fragenarray = [
-  "meine erste Frage <span class='red'>hallo</span>",
-  "meine zweite Frage",
-  "meine dritte Frage",
-  "meine 4 Frage",
-  "meine 5 Frage",
-  "meine 6 Frage",
-  "meine 7 Frage",
-  "meine 8 Frage",
-  "meine 9 Frage",
-  "meine 10 Frage",
-  "meine 11 Frage",
-  "meine 12 Frage",
-  "meine 13 Frage",
-  "meine 14 Frage",
-  "meine 15 Frage",
-  "meine 16 Frage",
+  "Tag oder Nacht?",
+  "Fahrer:in oder Beifahrer:in?",
+  "Avocado oder Jeans?",
+  "Chaos oder Struktur?",
+  "Edward oder Jacob?",
+  "Lego oder Playmobil?",
+  "Rindsfilet oder SUV?",
+  "Skipiste oder Autobahn?",
+  "Siehst du dich in dem oder bist das du?",
+  "Warme Dusche oder Netflix?",
+  "Zalando oder Zoo?",
+  "Drucken oder nicht?",
 ];
 
 function preload() {
@@ -55,6 +51,9 @@ function preload() {
   patternarray.push(loadImage("assets/09.2.png"));
   patternarray.push(loadImage("assets/10.1.png"));
   patternarray.push(loadImage("assets/10.2.png"));
+  patternarray.push(loadImage("assets/11.1.png"));
+  patternarray.push(loadImage("assets/11.2.png"));
+  // drucken oder nicht braucht auch ein bild
   patternarray.push(loadImage("assets/11.1.png"));
   patternarray.push(loadImage("assets/11.2.png"));
   /*
@@ -145,12 +144,21 @@ function keyPressed() {
     fragenindex++;
     setImage(fragenindex, 0);
     $("#fragen").html(fragenarray[fragenindex]);
+    console.log(fragenindex, fragenarray.length);
+    if (fragenindex >= fragenarray.length) {
+      handleUpload();
+      reset();
+    }
   }
 
   if (key == "n") {
     fragenindex++;
     setImage(fragenindex, 1);
     $("#fragen").html(fragenarray[fragenindex]);
+    console.log(fragenindex, fragenarray.length);
+    if (fragenindex >= fragenarray.length) {
+      reset();
+    }
   }
 
   if (key == "l") {
@@ -183,9 +191,9 @@ function setImage(index, answer) {
   paramArray[id] = value;
   $("#" + id).val(value);
   // reset if needed:
-  if (fragenindex >= fragenarray.length) {
+  /*if (fragenindex >= fragenarray.length) {
     reset();
-  }
+  }*/
   redraw();
 }
 
@@ -196,6 +204,9 @@ function reset() {
   for (let i = 0; i < fragenarray.length; i++) {
     $("#" + i).val("");
   }
+  $("#fragen").html(fragenarray[fragenindex]);
+
+  redraw();
 }
 
 // Upload Function für die Wand, noch in Arbeit…
