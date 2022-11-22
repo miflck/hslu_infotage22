@@ -13,6 +13,11 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/img")) {
 $file = $_SERVER['DOCUMENT_ROOT'] . "/img/".time().'.png';
 
 $success = file_put_contents($file, $data);
+
+$message = exec("lp -d EPSON_ET_2750_Series -o media=A6 $file");
+
+echo $message;
+
 print $success ? $file.' saved.' : 'Unable to save the file.';
 
   /*  $data = $_POST['photo'];

@@ -5,6 +5,8 @@ html, body {
 
 canvas {
   display: block;
+  top: 100px;
+
 }
 
 .red{
@@ -43,4 +45,10 @@ right:0px;
 display: block;
 position: absolute;
 border: solid thin black;
+}
+
+input,button{
+  position:relative;
+  z-index: 500;
+  right:0px;
 }
