@@ -157,6 +157,8 @@ function keyPressed() {
     $("#fragen").html(fragenarray[fragenindex]);
     console.log(fragenindex, fragenarray.length);
     if (fragenindex >= fragenarray.length) {
+      // hier noch ohne druck
+      handleUpload();
       reset();
     }
   }
