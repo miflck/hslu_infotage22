@@ -24,7 +24,7 @@ let fragenarray = [
   "<span class='red'>Zalando</span> <span class='oder'> oder </span>  Zoo?",
   "<span class='red'>Skipiste</span> <span class='oder'> oder </span>  Autobahn?",
   "<span class='red'>Siehst du dich in dem?</span> <span class='oder'> oder </span>  Bist du das?",
-  "Drucken oder nicht?",
+  "<span class='red'>Drucken</span> <span class='oder'> oder </span>  posten?",
 ];
 
 function preload() {
@@ -53,6 +53,9 @@ function preload() {
   patternarray.push(loadImage("assets/11_rot.png"));
   patternarray.push(loadImage("assets/11_schwarz.png"));
 
+  // drucken oder nicht braucht auch ein bild, respektive der array muss gross genug sein. das wird aber nicht gebraucht
+  patternarray.push(loadImage("assets/11_rot.png"));
+  patternarray.push(loadImage("assets/11_schwarz.png"));
   /*
   // alle bilder müssen geladen werden
   patternarray.push(loadImage("assets/01.1.png"));
@@ -173,7 +176,7 @@ function keyPressed() {
     $("#fragen").html(fragenarray[fragenindex]);
     console.log(fragenindex, fragenarray.length);
     if (fragenindex >= fragenarray.length) {
-      handleUpload();
+      handleUpload(1);
       reset();
     }
   }
@@ -185,7 +188,7 @@ function keyPressed() {
     console.log(fragenindex, fragenarray.length);
     if (fragenindex >= fragenarray.length) {
       // hier noch ohne druck
-      handleUpload();
+      handleUpload(0);
       reset();
     }
   }
@@ -239,11 +242,8 @@ function reset() {
 }
 
 // Upload Function für die Wand, noch in Arbeit…
-function handleUpload() {
+function handleUpload(print) {
   var c = canvas.canvas.toDataURL("image/png");
-  const e = document.createElement("div");
-  e.innerHTML = "JavaScript DOM";
-  document.body.appendChild(e);
 
   var dataURL = canvas.canvas.toDataURL();
 
@@ -262,7 +262,7 @@ function handleUpload() {
     image: c,
   });*/
 
-  fetch("./upload/upload.php", {
+  fetch("./upload/upload.php?print=" + print, {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -271,4 +271,16 @@ function handleUpload() {
     .then((response) => response.text())
     .then((success) => console.log(success))
     .catch((error) => console.log(error));
+
+  if (print == 0) {
+    fetch("https://hslu2022.michaelflueckiger.ch/upload/upload.php", {
+      method: "POST",
+      mode: "no-cors",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: c,
+    })
+      .then((response) => response.text())
+      .then((success) => console.log(success))
+      .catch((error) => console.log(error));
+  }
 }
