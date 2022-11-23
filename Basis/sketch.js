@@ -14,16 +14,16 @@ let fragenindex = 0;
 // die Fragen
 let fragenarray = [
   "<span class='red'>Tag</span> <span class='oder'> oder </span> Nacht?",
+  "<span class='red'>Fahrerin</span> <span class='oder'> oder </span>  Beifahrerin?",
   "<span class='red'>Avocado</span> <span class='oder'> oder </span>  Jeans?",
-  "<span class='red'>Edward</span> <span class='oder'> oder </span>  Jacob?",
-  "<span class='red'>Rindsfilet</span> <span class='oder'> oder </span>  SUV?",
-  "<span class='red'>Siehst du dich in dem?</span> <span class='oder'> oder </span>  Bist du das?",
-  "<span class='red'>Warme Dusche</span> <span class='oder'> oder </span>  Netflix?",
-  "<span class='red'>Fahrer</span> <span class='oder'> oder </span>  Beifahrer?",
   "<span class='red'>Chaos</span> <span class='oder'> oder </span>  Struktur?",
+  "<span class='red'>Edward</span> <span class='oder'> oder </span>  Jacob?",
   "<span class='red'>Lego</span> <span class='oder'> oder </span>  Playmobil?",
-  "<span class='red'>Skipiste</span> <span class='oder'> oder </span>  Autobahn?",
+  "<span class='red'>Rindsfilet</span> <span class='oder'> oder </span>  SUV?",
+  "<span class='red'>Netflix</span> <span class='oder'> oder </span>  Warme Dusche?",
   "<span class='red'>Zalando</span> <span class='oder'> oder </span>  Zoo?",
+  "<span class='red'>Skipiste</span> <span class='oder'> oder </span>  Autobahn?",
+  "<span class='red'>Siehst du dich in dem?</span> <span class='oder'> oder </span>  Bist du das?",
   "Drucken oder nicht?",
 ];
 
@@ -167,7 +167,7 @@ function keyPressed() {
   }
 
   // fragen beantworten
-  if (key == "j") {
+  if (key == "n") {
     fragenindex++;
     setImage(fragenindex, 0);
     $("#fragen").html(fragenarray[fragenindex]);
@@ -178,7 +178,7 @@ function keyPressed() {
     }
   }
 
-  if (key == "n") {
+  if (key == "j") {
     fragenindex++;
     setImage(fragenindex, 1);
     $("#fragen").html(fragenarray[fragenindex]);
