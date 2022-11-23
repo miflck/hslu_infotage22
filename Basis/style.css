@@ -13,6 +13,12 @@ canvas {
   color:red;
 }
 
+.oder{
+  margin-right: 30px;
+  color:rgb(100,100,100)
+}
+
+
 #sidebar{
   
   border:solid thin red;
@@ -22,12 +28,28 @@ width:400px;
 right:0px;
 }
 
+#title{
+  margin: auto;
+  position: relative;
+  font-size: 20px; 
+  font-family: 'Roboto Mono', monospace;
+  display: block;
+  margin-top: 2%;;
+  text-align: center;
+
+}
+
 
 #fragenWrapper{
+
   display: block;
-  border:solid thin red;
-  position: relative;
-  width:100vw;
+  position: absolute;
+  bottom: 0;
+  margin-bottom: 5%;
+  margin-top: 5%;;
+  text-align: center;
+ /* margin-left: 5%;*/
+ width:100%;
 }
 
 #buttons{
@@ -35,17 +57,23 @@ right:0px;
 }
 
 #fragen{
+  margin: auto;
   position: relative;
-  border: solid thin blue;
-  font-size: 5rem;
+  font-size: 50px; 
+  font-family: 'Roboto Mono', monospace;
   display: block;
 }
 
 #defaultCanvas0{
+  margin: auto;
+  margin-top: 5rem;
 display: block;
-position: absolute;
-border: solid thin black;
+border: solid black;
+border-width: 3px;
+
+
 }
+
 
 input,button{
   position:relative;

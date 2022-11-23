@@ -13,21 +13,47 @@ let fragenindex = 0;
 
 // die Fragen
 let fragenarray = [
-  "Tag oder Nacht?",
-  "Fahrer:in oder Beifahrer:in?",
-  "Avocado oder Jeans?",
-  "Chaos oder Struktur?",
-  "Edward oder Jacob?",
-  "Lego oder Playmobil?",
-  "Rindsfilet oder SUV?",
-  "Skipiste oder Autobahn?",
-  "Siehst du dich in dem oder bist das du?",
-  "Warme Dusche oder Netflix?",
-  "Zalando oder Zoo?",
+  "<span class='red'>Tag</span> <span class='oder'> oder </span> Nacht?",
+  "<span class='red'>Avocado</span> <span class='oder'> oder </span>  Jeans?",
+  "<span class='red'>Edward</span> <span class='oder'> oder </span>  Jacob?",
+  "<span class='red'>Rindsfilet</span> <span class='oder'> oder </span>  SUV?",
+  "<span class='red'>Siehst du dich in dem?</span> <span class='oder'> oder </span>  Bist du das?",
+  "<span class='red'>Warme Dusche</span> <span class='oder'> oder </span>  Netflix?",
+  "<span class='red'>Fahrer</span> <span class='oder'> oder </span>  Beifahrer?",
+  "<span class='red'>Chaos</span> <span class='oder'> oder </span>  Struktur?",
+  "<span class='red'>Lego</span> <span class='oder'> oder </span>  Playmobil?",
+  "<span class='red'>Skipiste</span> <span class='oder'> oder </span>  Autobahn?",
+  "<span class='red'>Zalando</span> <span class='oder'> oder </span>  Zoo?",
   "Drucken oder nicht?",
 ];
 
 function preload() {
+  patternarray.push(loadImage("assets/01_rot.png"));
+  patternarray.push(loadImage("assets/01_schwarz.png"));
+  patternarray.push(loadImage("assets/02_rot.png"));
+  patternarray.push(loadImage("assets/02_schwarz.png"));
+  patternarray.push(loadImage("assets/03_rot.png"));
+  patternarray.push(loadImage("assets/03_schwarz.png"));
+  patternarray.push(loadImage("assets/04_rot.png"));
+  patternarray.push(loadImage("assets/04_schwarz.png"));
+  patternarray.push(loadImage("assets/05_rot.png"));
+  patternarray.push(loadImage("assets/05_schwarz.png"));
+  patternarray.push(loadImage("assets/06_rot.png"));
+  patternarray.push(loadImage("assets/06_schwarz.png"));
+  //Effekt
+  patternarray.push(loadImage("assets/07_rot.png"));
+  patternarray.push(loadImage("assets/07_schwarz.png"));
+
+  patternarray.push(loadImage("assets/08_rot.png"));
+  patternarray.push(loadImage("assets/08_schwarz.png"));
+  patternarray.push(loadImage("assets/09_rot.png"));
+  patternarray.push(loadImage("assets/09_schwarz.png"));
+  patternarray.push(loadImage("assets/10_rot.png"));
+  patternarray.push(loadImage("assets/10_schwarz.png"));
+  patternarray.push(loadImage("assets/11_rot.png"));
+  patternarray.push(loadImage("assets/11_schwarz.png"));
+
+  /*
   // alle bilder müssen geladen werden
   patternarray.push(loadImage("assets/01.1.png"));
   patternarray.push(loadImage("assets/01.2.png"));
@@ -56,6 +82,7 @@ function preload() {
   // drucken oder nicht braucht auch ein bild
   patternarray.push(loadImage("assets/11.1.png"));
   patternarray.push(loadImage("assets/11.2.png"));
+  */
   /*
   patternarray.push(loadImage("assets/0.png"));
   patternarray.push(loadImage("assets/1.png"));
