@@ -36,6 +36,7 @@ html, body {
   }
 
   .header{
+    padding-top: 2rem;
     font-family: TWKEverett;
     color: white;
   text-transform: uppercase;

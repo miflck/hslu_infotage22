@@ -1,8 +1,8 @@
 let patternarray = [];
 
 // hier wird die Dimension der Canvas festgelegt
-let visWidth = 1240 * 0.8; // 2; //620
-let visHeight = 1748 * 0.8; // 2; // 874
+let visWidth = 1240 * 0.95; // 2; //620
+let visHeight = 1748 * 0.95; // 2; // 874
 
 // der Array aller Dropdowns
 let paramArray = [];
@@ -201,7 +201,7 @@ function startScreen() {
   startscreen = true;
   console.log("start", startscreen);
 
-  $("#fragen").html("Buzzer für neustart");
+  $("#fragen").html("Buzzer für Neustart");
 
   redraw();
 }
