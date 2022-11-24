@@ -11,6 +11,8 @@ let canvas;
 // Zähler, zählt mit bei welcher Frage wir sind
 let fragenindex = 0;
 
+let startscreen = true;
+
 // die Fragen
 let fragenarray = [
   "<span class='red'>Tag</span> <span class='oder'> oder </span> Nacht?",
@@ -56,70 +58,6 @@ function preload() {
   // drucken oder nicht braucht auch ein bild, respektive der array muss gross genug sein. das wird aber nicht gebraucht
   patternarray.push(loadImage("assets/11_rot.png"));
   patternarray.push(loadImage("assets/11_schwarz.png"));
-  /*
-  // alle bilder müssen geladen werden
-  patternarray.push(loadImage("assets/01.1.png"));
-  patternarray.push(loadImage("assets/01.2.png"));
-  patternarray.push(loadImage("assets/02.1.png"));
-  patternarray.push(loadImage("assets/02.2.png"));
-  patternarray.push(loadImage("assets/03.1.png"));
-  patternarray.push(loadImage("assets/03.2.png"));
-  patternarray.push(loadImage("assets/04.1.png"));
-  patternarray.push(loadImage("assets/04.2.png"));
-  patternarray.push(loadImage("assets/05.1.png"));
-  patternarray.push(loadImage("assets/05.2.png"));
-  patternarray.push(loadImage("assets/06.1.png"));
-  patternarray.push(loadImage("assets/06.2.png"));
-  //Effekt
-  patternarray.push(loadImage("assets/07.1.png"));
-  patternarray.push(loadImage("assets/07.2.png"));
-
-  patternarray.push(loadImage("assets/08.1.png"));
-  patternarray.push(loadImage("assets/08.2.png"));
-  patternarray.push(loadImage("assets/09.1.png"));
-  patternarray.push(loadImage("assets/09.2.png"));
-  patternarray.push(loadImage("assets/10.1.png"));
-  patternarray.push(loadImage("assets/10.2.png"));
-  patternarray.push(loadImage("assets/11.1.png"));
-  patternarray.push(loadImage("assets/11.2.png"));
-  // drucken oder nicht braucht auch ein bild
-  patternarray.push(loadImage("assets/11.1.png"));
-  patternarray.push(loadImage("assets/11.2.png"));
-  */
-  /*
-  patternarray.push(loadImage("assets/0.png"));
-  patternarray.push(loadImage("assets/1.png"));
-  patternarray.push(loadImage("assets/2.png"));
-  patternarray.push(loadImage("assets/3.png"));
-  patternarray.push(loadImage("assets/4.png"));
-  patternarray.push(loadImage("assets/5.png"));
-  patternarray.push(loadImage("assets/6.png"));
-  patternarray.push(loadImage("assets/7.png"));
-  patternarray.push(loadImage("assets/8.png"));
-  patternarray.push(loadImage("assets/9.png"));
-  patternarray.push(loadImage("assets/10.png"));
-  patternarray.push(loadImage("assets/11.png"));
-  patternarray.push(loadImage("assets/12.png"));
-  patternarray.push(loadImage("assets/13.png"));
-  patternarray.push(loadImage("assets/14.png"));
-  patternarray.push(loadImage("assets/15.png"));
-  patternarray.push(loadImage("assets/16.png"));
-  patternarray.push(loadImage("assets/17.png"));
-  patternarray.push(loadImage("assets/18.png"));
-  patternarray.push(loadImage("assets/19.png"));
-  patternarray.push(loadImage("assets/20.png"));
-  patternarray.push(loadImage("assets/21.png"));
-  patternarray.push(loadImage("assets/22.png"));
-  patternarray.push(loadImage("assets/23.png"));
-  patternarray.push(loadImage("assets/24.png"));
-  patternarray.push(loadImage("assets/25.png"));
-  patternarray.push(loadImage("assets/26.png"));
-  patternarray.push(loadImage("assets/27.png"));
-  patternarray.push(loadImage("assets/28.png"));
-  patternarray.push(loadImage("assets/29.png"));
-  patternarray.push(loadImage("assets/30.png"));
-  patternarray.push(loadImage("assets/31.png"));
-  */
 }
 
 function setup() {
@@ -134,28 +72,37 @@ function setup() {
   // socket.emit("hello", "world");
 
   // erste Frage laden
-  $("#fragen").html(fragenarray[fragenindex]);
+  // $("#fragen").html(fragenarray[fragenindex]);
 }
 
 function draw() {
   background(255);
-  paramArray.forEach((element, index) => {
-    push();
-    translate(0, 0);
-    // farben festlegen. das kann natürlich z.b auch an ein dropdown geknüpft werden
-    let hue = map(index, 0, paramArray.length, 0, 360);
-    let saturation = 80;
-    let brightness = 80;
-    // blendmodes, wie bei Photoshop. Also wird das bild normal dargestellt oder z.B multipliziert etc
-    //if(index==2)blendMode(DIFFERENCE);
-    // das png wird eingefärbt: achtung, es muss weiss auf transparent sein
-    // tint(hue, saturation, brightness);
-    // rect(0, 0, tileSize, tileSize);
-    // deas bild wird getzeichnet
-    image(patternarray[element], 0, 0, visWidth, visHeight);
-    //blendMode(SCREEN)
-    pop();
-  });
+  if (startscreen) {
+    console.log(startscreen);
+    textAlign(CENTER, CENTER);
+
+    text("hello", 0, 0);
+    textSize(800);
+    text("?", width / 2, height / 2);
+  } else {
+    paramArray.forEach((element, index) => {
+      push();
+      translate(0, 0);
+      // farben festlegen. das kann natürlich z.b auch an ein dropdown geknüpft werden
+      let hue = map(index, 0, paramArray.length, 0, 360);
+      let saturation = 80;
+      let brightness = 80;
+      // blendmodes, wie bei Photoshop. Also wird das bild normal dargestellt oder z.B multipliziert etc
+      //if(index==2)blendMode(DIFFERENCE);
+      // das png wird eingefärbt: achtung, es muss weiss auf transparent sein
+      // tint(hue, saturation, brightness);
+      // rect(0, 0, tileSize, tileSize);
+      // deas bild wird getzeichnet
+      image(patternarray[element], 0, 0, visWidth, visHeight);
+      //blendMode(SCREEN)
+      pop();
+    });
+  }
 }
 
 function keyPressed() {
@@ -174,24 +121,30 @@ function keyPressed() {
   // fragen beantworten
   if (key == "n") {
     fragenindex++;
+    if (startscreen) {
+      reset();
+    }
     setImage(fragenindex, 0);
     $("#fragen").html(fragenarray[fragenindex]);
     console.log(fragenindex, fragenarray.length);
     if (fragenindex >= fragenarray.length) {
       handleUpload(1);
-      reset();
+      startScreen();
     }
   }
 
   if (key == "j") {
     fragenindex++;
+    if (startscreen) {
+      reset();
+    }
     setImage(fragenindex, 1);
     $("#fragen").html(fragenarray[fragenindex]);
     console.log(fragenindex, fragenarray.length);
     if (fragenindex >= fragenarray.length) {
       // hier noch ohne druck
       handleUpload(0);
-      reset();
+      startScreen();
     }
   }
 
@@ -232,6 +185,7 @@ function setImage(index, answer) {
 }
 
 function reset() {
+  startscreen = false;
   //-> hier muss noch gesaved, gedruckt und an die Wand gesendet werden
   fragenindex = 0;
   paramArray = [];
@@ -239,6 +193,16 @@ function reset() {
     $("#" + i).val("");
   }
   $("#fragen").html(fragenarray[fragenindex]);
+
+  redraw();
+}
+
+function startScreen() {
+  console.log(startscreen);
+  startscreen = true;
+  console.log("start", startscreen);
+
+  $("#fragen").html("Buzzer für neustart");
 
   redraw();
 }
