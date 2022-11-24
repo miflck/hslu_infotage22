@@ -1,3 +1,10 @@
+
+@font-face {
+  font-family: TWKEverett;
+  font-weight: medium;
+  src: url("./assets/fonts/TWKEverett-Medium.otf") format("opentype");
+}
+
 html, body {
     margin: 0;
     padding: 0;
@@ -7,4 +14,50 @@ html, body {
   canvas {
     display: block;
   }
+
+  #defaultCanvas0{
+    position: relative;
+    margin: auto;
+  display: block;
+  top: 2rem;
   
+  
+  }
+
+  h1{
+ 
+  margin: 0 ;
+  font-size: 5rem;
+  line-height: 5rem;
+  }
+
+  h2{
+    color: red;
+  }
+
+  .header{
+    font-family: TWKEverett;
+    color: red;
+  text-transform: uppercase;
+  text-align: left;
+  position: relative;
+  width: 1550px;
+  margin: auto;
+  }
+
+  .sub{
+    display: block;
+    position: relative;
+    border: solid thin red;
+    float: left;
+  }
+
+  .left{
+    left:0px;
+  }
+
+  .right{
+    position: relative;
+
+    right:0px
+  }

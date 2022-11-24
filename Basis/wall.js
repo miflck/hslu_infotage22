@@ -1,9 +1,9 @@
-let numRows = 4;
+let numRows = 5;
 let numCols = 2;
 
 // hier wird die Dimension der Canvas festgelegt
-let visWidth = 1240 / 3;
-let visHeight = 1748 / 3;
+let visWidth = 1240 * 0.25;
+let visHeight = 1748 * 0.25;
 
 let cols = [];
 var possible_images;
@@ -37,32 +37,7 @@ function fentchFiles() {
 function setup() {
   createCanvas(numRows * visWidth, numCols * visHeight);
   setInterval(fentchFiles, 3000);
-  possible_images = [
-    "assets/myPattern.-4.png",
-    "assets/myPattern.-5.png",
-    "assets/myPattern.-6.png",
-    "assets/myPattern.-7.png",
-    "assets/myPattern.-8.png",
-    "assets/myPattern.-9.png",
-    "assets/myPattern.-10.png",
-    "assets/myPattern.-11.png",
-    "assets/myPattern.-12.png",
-    "assets/myPattern.-13.png",
-    "assets/myPattern.-14.png",
-    "assets/myPattern.-15.png",
-    "assets/myPattern.-16.png",
-    "assets/myPattern.-17.png",
-    "assets/myPattern.-18.png",
-    "assets/myPattern.-19.png",
-    "assets/myPattern.-20.png",
-    "assets/myPattern.-21.png",
-    "assets/myPattern.-22.png",
-    "assets/myPattern.-23.png",
-    "assets/myPattern.-24.png",
-    "assets/myPattern.-25.png",
-    "assets/myPattern.-26.png",
-    "assets/myPattern.-27.png",
-  ];
+  possible_images = [];
 
   let xPos = -visWidth;
   let yPos = 0;
