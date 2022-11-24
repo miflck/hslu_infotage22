@@ -1,8 +1,8 @@
 let patternarray = [];
 
 // hier wird die Dimension der Canvas festgelegt
-let visWidth = 1240 / 2;
-let visHeight = 1748 / 2;
+let visWidth = 1240 * 0.8; // 2; //620
+let visHeight = 1748 * 0.8; // 2; // 874
 
 // der Array aller Dropdowns
 let paramArray = [];
@@ -124,6 +124,8 @@ function preload() {
 
 function setup() {
   canvas = createCanvas(visWidth, visHeight);
+  canvas.parent("canvasForHTML");
+
   colorMode(HSB, 360, 100, 100, 100);
   frameRate(60);
   noLoop();
