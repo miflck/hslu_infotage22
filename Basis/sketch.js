@@ -81,7 +81,6 @@ function draw() {
     console.log(startscreen);
     textAlign(CENTER, CENTER);
 
-    text("hello", 0, 0);
     textSize(800);
     text("?", width / 2, height / 2);
   } else {
