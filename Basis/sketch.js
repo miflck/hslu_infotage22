@@ -16,7 +16,7 @@ let startscreen = true;
 // die Fragen
 let fragenarray = [
   "<span class='red'>Tag</span> <span class='oder'> oder </span> Nacht?",
-  "<span class='red'>Fahrerin</span> <span class='oder'> oder </span>  Beifahrerin?",
+  "<span class='red'>Fahrer:in</span> <span class='oder'> oder </span>  Beifahrer:in?",
   "<span class='red'>Avocado</span> <span class='oder'> oder </span>  Jeans?",
   "<span class='red'>Chaos</span> <span class='oder'> oder </span>  Struktur?",
   "<span class='red'>Edward</span> <span class='oder'> oder </span>  Jacob?",
