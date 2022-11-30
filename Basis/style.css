@@ -6,9 +6,7 @@ html, body {
   padding: 0;
   /*vars*/
   --fontsizeTitle:3rem;
-
   --fontsize:4rem;
-
 }
 
 canvas {
@@ -22,19 +20,16 @@ canvas {
 }
 
 .oder{
-  /* margin-right: 5rem;
-  margin-left: 5rem; */
   color:rgb(100,100,100)
 }
 
 
 #sidebar{
-  
   border:solid thin red;
   display:none;
   position: fixed;
-width:400px;
-right:0px;
+  width:400px;
+  right:0px;
 }
 
 #title{
@@ -45,21 +40,16 @@ right:0px;
   display: block;
   margin-top: 5rem;
   text-align: center;
-
 }
 
 
 #fragenWrapper{
   font-size:var(--fontsize); 
   font-family: 'Roboto Mono', monospace;
-
   display: block;
- /* position: absolute;
-  bottom: 0;*/
   margin-bottom: 5%;
   margin-top: 5%;;
   text-align: center;
- /* margin-left: 5%;*/
  width:100%;
 }
 
@@ -76,13 +66,10 @@ right:0px;
 #defaultCanvas0{
   margin: auto;
   margin-top: 5rem;
-display: block;
-border: solid black;
-border-width: 3px;
-
-width: 100%;
-
-
+  display: block;
+  border: solid black;
+  border-width: 3px;
+  width: 100%;
 }
 
 

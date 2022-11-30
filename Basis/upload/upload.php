@@ -1,6 +1,4 @@
 <?php
-
-
 $img = file_get_contents("php://input"); // $_POST didn't work
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
@@ -19,14 +17,15 @@ if (!file_exists($_SERVER['DOCUMENT_ROOT'] . "/post")) {
 }
 
 
-
 $print=(bool)@$_GET['print'];
+$printer=@$_GET['printer'];
+
 if($print){
 
     $file = $_SERVER['DOCUMENT_ROOT'] . "/print/".time().'.png';
     $success = file_put_contents($file, $data);
 
-$message = exec("lp -d EPSON_ET_2850_Series -o media=A6 -o cupsPrintQuality=High $file");
+$message = exec("lp -d ".$printer." -o media=A6 -o cupsPrintQuality=High $file");
 echo $message;
 }else {
 
@@ -34,11 +33,8 @@ echo $message;
     $success = file_put_contents($file, $data);
 }
 
-
 $file = $_SERVER['DOCUMENT_ROOT'] . "/img/".time().'.png';
 $success = file_put_contents($file, $data);
-
-
 
 print $success ? $file.' saved.'.$print : 'Unable to save the file.';
 

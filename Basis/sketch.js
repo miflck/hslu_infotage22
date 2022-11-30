@@ -1,4 +1,8 @@
-let patternarray = [];
+// Start local php server:
+//php -S localhost:8000
+
+// array der layer
+let layerarray = [];
 
 // hier wird die Dimension der Canvas festgelegt
 let visWidth = 1240 * 0.8; // 2; //620
@@ -11,7 +15,11 @@ let canvas;
 // Zähler, zählt mit bei welcher Frage wir sind
 let fragenindex = 0;
 
+// Boolean, nach jedem Durchgang soll ein Startscreen gezeigt werden
 let startscreen = true;
+
+// Druckeradresse, wird ans php skript weiter gegeben für lp cups
+let printer = "EPSON_ET_2850_Series";
 
 // die Fragen
 let fragenarray = [
@@ -30,49 +38,40 @@ let fragenarray = [
 ];
 
 function preload() {
-  patternarray.push(loadImage("assets/01_rot.png"));
-  patternarray.push(loadImage("assets/01_schwarz.png"));
-  patternarray.push(loadImage("assets/02_rot.png"));
-  patternarray.push(loadImage("assets/02_schwarz.png"));
-  patternarray.push(loadImage("assets/03_rot.png"));
-  patternarray.push(loadImage("assets/03_schwarz.png"));
-  patternarray.push(loadImage("assets/04_rot.png"));
-  patternarray.push(loadImage("assets/04_schwarz.png"));
-  patternarray.push(loadImage("assets/05_rot.png"));
-  patternarray.push(loadImage("assets/05_schwarz.png"));
-  patternarray.push(loadImage("assets/06_rot.png"));
-  patternarray.push(loadImage("assets/06_schwarz.png"));
-  //Effekt
-  patternarray.push(loadImage("assets/07_rot.png"));
-  patternarray.push(loadImage("assets/07_schwarz.png"));
+  layerarray.push(loadImage("assets/01_rot.png"));
+  layerarray.push(loadImage("assets/01_schwarz.png"));
+  layerarray.push(loadImage("assets/02_rot.png"));
+  layerarray.push(loadImage("assets/02_schwarz.png"));
+  layerarray.push(loadImage("assets/03_rot.png"));
+  layerarray.push(loadImage("assets/03_schwarz.png"));
+  layerarray.push(loadImage("assets/04_rot.png"));
+  layerarray.push(loadImage("assets/04_schwarz.png"));
+  layerarray.push(loadImage("assets/05_rot.png"));
+  layerarray.push(loadImage("assets/05_schwarz.png"));
+  layerarray.push(loadImage("assets/06_rot.png"));
+  layerarray.push(loadImage("assets/06_schwarz.png"));
+  layerarray.push(loadImage("assets/07_rot.png"));
+  layerarray.push(loadImage("assets/07_schwarz.png"));
+  layerarray.push(loadImage("assets/08_rot.png"));
+  layerarray.push(loadImage("assets/08_schwarz.png"));
+  layerarray.push(loadImage("assets/09_rot.png"));
+  layerarray.push(loadImage("assets/09_schwarz.png"));
+  layerarray.push(loadImage("assets/10_rot.png"));
+  layerarray.push(loadImage("assets/10_schwarz.png"));
+  layerarray.push(loadImage("assets/11_rot.png"));
+  layerarray.push(loadImage("assets/11_schwarz.png"));
 
-  patternarray.push(loadImage("assets/08_rot.png"));
-  patternarray.push(loadImage("assets/08_schwarz.png"));
-  patternarray.push(loadImage("assets/09_rot.png"));
-  patternarray.push(loadImage("assets/09_schwarz.png"));
-  patternarray.push(loadImage("assets/10_rot.png"));
-  patternarray.push(loadImage("assets/10_schwarz.png"));
-  patternarray.push(loadImage("assets/11_rot.png"));
-  patternarray.push(loadImage("assets/11_schwarz.png"));
-
-  // drucken oder nicht braucht auch ein bild, respektive der array muss gross genug sein. das wird aber nicht gebraucht
-  patternarray.push(loadImage("assets/11_rot.png"));
-  patternarray.push(loadImage("assets/11_schwarz.png"));
+  // drucken oder nicht? braucht auch ein bild, respektive der array muss gross genug sein. das wird aber nicht angezeigt…
+  layerarray.push(loadImage("assets/11_rot.png"));
+  layerarray.push(loadImage("assets/11_schwarz.png"));
 }
 
 function setup() {
   canvas = createCanvas(visWidth, visHeight);
   canvas.parent("canvasForHTML");
-
   colorMode(HSB, 360, 100, 100, 100);
   frameRate(60);
   noLoop();
-
-  // websocket, um sich mit der "Wand" zu verbinden
-  // socket.emit("hello", "world");
-
-  // erste Frage laden
-  // $("#fragen").html(fragenarray[fragenindex]);
 }
 
 function draw() {
@@ -97,7 +96,7 @@ function draw() {
       // tint(hue, saturation, brightness);
       // rect(0, 0, tileSize, tileSize);
       // deas bild wird getzeichnet
-      image(patternarray[element], 0, 0, visWidth, visHeight);
+      image(layerarray[element], 0, 0, visWidth, visHeight);
       //blendMode(SCREEN)
       pop();
     });
@@ -105,13 +104,10 @@ function draw() {
 }
 
 function keyPressed() {
-  if (key == "S") {
-    saveCanvas("myPattern", ".png");
-  }
-
   if (key == "r") {
     redraw();
   }
+
   if (key == "s") {
     handleUpload();
     //saveCanvas("myPattern", ".png");
@@ -141,21 +137,9 @@ function keyPressed() {
     $("#fragen").html(fragenarray[fragenindex]);
     console.log(fragenindex, fragenarray.length);
     if (fragenindex >= fragenarray.length) {
-      // hier noch ohne druck
       handleUpload(0);
       startScreen();
     }
-  }
-
-  if (key == "l") {
-    fetch("./upload/getFiles.php", {
-      method: "GET",
-      mode: "no-cors",
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    })
-      .then((response) => response.text())
-      .then((success) => console.log(success))
-      .catch((error) => console.log(error));
   }
 }
 
@@ -176,23 +160,18 @@ function setImage(index, answer) {
   var value = id * 2 + answer;
   paramArray[id] = value;
   $("#" + id).val(value);
-  // reset if needed:
-  /*if (fragenindex >= fragenarray.length) {
-    reset();
-  }*/
+
   redraw();
 }
 
 function reset() {
   startscreen = false;
-  //-> hier muss noch gesaved, gedruckt und an die Wand gesendet werden
   fragenindex = 0;
   paramArray = [];
   for (let i = 0; i < fragenarray.length; i++) {
     $("#" + i).val("");
   }
   $("#fragen").html(fragenarray[fragenindex]);
-
   redraw();
 }
 
@@ -200,9 +179,7 @@ function startScreen() {
   console.log(startscreen);
   startscreen = true;
   console.log("start", startscreen);
-
-  $("#fragen").html("Buzzer für neustart");
-
+  $("#fragen").html("Buzzer für Neustart");
   redraw();
 }
 
@@ -210,24 +187,7 @@ function startScreen() {
 function handleUpload(print) {
   var c = canvas.canvas.toDataURL("image/png");
 
-  var dataURL = canvas.canvas.toDataURL();
-
-  /*const img = document.createElement("img");
-  img.width = width;
-  img.height = height;
-  img.src = dataURL;
-  document.body.appendChild(img);
-  */
-
-  /*let response = fetch("./upload/upload.php", {
-    // HTTP request type
-    method: "POST",
-    // Sending our blob with our request
-    body: { imgBase64: c },
-    image: c,
-  });*/
-
-  fetch("./upload/upload.php?print=" + print, {
+  fetch("./upload/upload.php?print=" + print + "&printer=" + printer, {
     method: "POST",
     mode: "no-cors",
     headers: { "Content-Type": "application/x-www-form-urlencoded" },
@@ -237,6 +197,8 @@ function handleUpload(print) {
     .then((success) => console.log(success))
     .catch((error) => console.log(error));
 
+  /*
+  Die Bilder für die Postings wurden zusätzlich auf meinen Server geladen, damit das SCM-Team zugriff auf die Bilder hatte. das muss nicht länger sein…
   if (print == 0) {
     fetch("https://hslu2022.michaelflueckiger.ch/upload/upload.php", {
       method: "POST",
@@ -248,4 +210,5 @@ function handleUpload(print) {
       .then((success) => console.log(success))
       .catch((error) => console.log(error));
   }
+  */
 }

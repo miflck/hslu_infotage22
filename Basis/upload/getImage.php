@@ -6,15 +6,12 @@ header("Last-Modified: " . gmdate("D, d M Y H:i:s") . " GMT");
 header("Cache-Control: no-store, no-cache, must-revalidate");
 header("Cache-Control: post-check=0, pre-check=0", false);
 header("Pragma: no-cache");
- 
 header("Access-Control-Allow-Origin: *");
-
-//echo "<h2>hello</h2>";
 
 // get the file name
 $file=@$_GET['file'];
 $filename= $_SERVER['DOCUMENT_ROOT'] . "/img/".$file;
-//echo $filename;
+
 // get the size for content length
 $size= filesize($filename);
 header("Content-Length: $size bytes");

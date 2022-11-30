@@ -46,20 +46,10 @@ function setup() {
   for (let i = 0; i < numCols; i++) {
     cols.push(new Array());
   }
-
-  /* for (let i = 0; i < 2; i++) {
-    let t = new Tile(tileSize, xPos, yPos);
-    t.setTargetX(targetX);
-    row1.push(t);
-    rows[0].push(t);
-    xPos += tileSize;
-    targetX += tileSize;
-  }*/
 }
 
 function draw() {
   background(0);
-  //image(img, 0, 0);
   cols.forEach(function (col, i) {
     col.forEach(function (tile, ti) {
       tile.move();
@@ -94,7 +84,6 @@ function keyPressed() {
     fetch("  ./upload/getFiles.php", {
       method: "GET",
       mode: "cors", // no-cors, *cors, same-origin
-
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
     })
       .then((response) => response.text())
@@ -145,7 +134,6 @@ class Tile {
     this.targetY = 0;
     this.tileWidth = tileWidth;
     this.tileHeigh = tileHeight;
-
     this.animationStartTime;
     this._remove = false;
     this.image;
@@ -167,8 +155,6 @@ class Tile {
   display() {
     push();
     translate(this.x, this.y);
-    //fill(0, 255, 0, 100);
-
     if (this.x >= numRows * this.tileWidth) {
       this.remove = true;
     }
@@ -252,23 +238,12 @@ function createNewTile(rowIndex, url) {
   cols[rowIndex].forEach(function (tile, i) {
     tile.setTargetX(tile.targetX + tile.tileWidth);
   });
-
   let t = new Tile(visWidth, visHeight, -visWidth, 0);
-
-  //1667220558.png
   let img = loadImage("./upload/getImage.php?file=" + url);
   t.setImage(img);
   t.setTargetX(0);
   cols[rowIndex].push(t);
 }
-
-/*
-var t = 0,		// current time (ms, s, frames, ...)
-	b = 10,		// initial value
-	c = 100,	// change in value (final value - initial value)
-	d = 2		// duration (same units as t)
-	value = penner.easeOutQuad(t, b, c, d);
-  */
 
 // HELPER
 
