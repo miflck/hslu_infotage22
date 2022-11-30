@@ -5,8 +5,8 @@
 let layerarray = [];
 
 // hier wird die Dimension der Canvas festgelegt
-let visWidth = 1240 * 0.8; // 2; //620
-let visHeight = 1748 * 0.8; // 2; // 874
+let visWidth = 1240 * 0.95; // 2; //620
+let visHeight = 1748 * 0.95; // 2; // 874
 
 // der Array aller Dropdowns
 let paramArray = [];
@@ -24,7 +24,7 @@ let printer = "EPSON_ET_2850_Series";
 // die Fragen
 let fragenarray = [
   "<span class='red'>Tag</span> <span class='oder'> oder </span> Nacht?",
-  "<span class='red'>Fahrerin</span> <span class='oder'> oder </span>  Beifahrerin?",
+  "<span class='red'>Fahrer:in</span> <span class='oder'> oder </span>  Beifahrer:in?",
   "<span class='red'>Avocado</span> <span class='oder'> oder </span>  Jeans?",
   "<span class='red'>Chaos</span> <span class='oder'> oder </span>  Struktur?",
   "<span class='red'>Edward</span> <span class='oder'> oder </span>  Jacob?",
